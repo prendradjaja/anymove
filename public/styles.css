@@ -9,7 +9,11 @@
   grid-template-columns: 100px 100px;
 }
 
-button#undo {
-  width: 200px;
+.selected-move {
+  font-weight: bold;
+}
+
+button#undo, button#redo {
+  width: 150px;
   height: 40px;
 }

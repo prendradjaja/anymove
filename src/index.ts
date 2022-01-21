@@ -39,6 +39,7 @@ function onDrop(
       piece,
       isCapture,
     });
+    // moveList.select(moveList.moves.length - 1);
   } else if (moveList.lastMove()) {
     console.log('TODO: Handle offboard');
     // const move = moveList.lastMove();
@@ -53,11 +54,11 @@ document.addEventListener('DOMContentLoaded', () => {
   moveList = new MoveList(moveListElement as HTMLElement);
 });
 
-document.querySelector('button#undo')!.addEventListener('click', () => {
-  const position = positionStack.pop();
-  if (!position) {
-    return;
-  }
-  board.position(position, false);
-  moveList.remove();
-});
+// document.querySelector('button#undo')!.addEventListener('click', () => {
+//   const position = positionStack.pop();
+//   if (!position) {
+//     return;
+//   }
+//   board.position(position, false);
+//   moveList.remove();
+// });
