@@ -1,0 +1,15 @@
+#move-list-wrapper {
+  background: #ccc;
+  width: 200px;
+  height: 400px;
+}
+
+#move-list {
+  display: grid;
+  grid-template-columns: 100px 100px;
+}
+
+button#undo {
+  width: 200px;
+  height: 40px;
+}
