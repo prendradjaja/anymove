@@ -1,7 +1,12 @@
+body {
+  background: #333;
+}
+
 #move-list-wrapper {
   background: #ccc;
-  width: 200px;
-  height: 400px;
+  width: 220px;
+  height: 392px;
+  overflow-y: scroll;
 }
 
 #move-list {
@@ -13,7 +18,13 @@
   font-weight: bold;
 }
 
-button#undo, button#redo {
+button {
   width: 150px;
   height: 40px;
+}
+
+
+/* Modifications to chessboard css */
+.board-b72b1 {
+  border: 0 !important;
 }

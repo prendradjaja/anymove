@@ -1,10 +1,14 @@
 import { htmlToElement } from './util';
 
 export interface Move {
+  color: string;
   piece: string;
   source: string;
   target: string;
   isCapture?: boolean;
+  promotedTo?: string;
+  oldPosition: string;
+  newPosition: string;
 }
 
 export function redrawMoveList(moves: Move[], selectedMove: number | undefined) {
@@ -16,6 +20,7 @@ export function redrawMoveList(moves: Move[], selectedMove: number | undefined) 
   moveList.innerHTML = '';
 
   for (let [i, move] of moves.entries()) {
+    if (i === 0) { continue; }
     const moveString = moveToString(move);
     const moveElement = htmlToElement(`
       <div>${moveString}</div>
@@ -28,5 +33,14 @@ export function redrawMoveList(moves: Move[], selectedMove: number | undefined) 
 }
 
 function moveToString(move: Move): string {
-  return move.piece + (move.isCapture ? 'x' : '') + move.target;
+  const promotionPart = move.promotedTo ? `=${move.promotedTo}` : '';
+  if (move.piece !== 'P') {
+    return move.piece + (move.isCapture ? 'x' : '') + move.target + promotionPart;
+  } else {
+    if (!move.isCapture) {
+      return move.target + promotionPart;
+    } else {
+      return move.source[0] + 'x' + move.target + promotionPart;
+    }
+  }
 }

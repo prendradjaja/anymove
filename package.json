@@ -25,6 +25,7 @@
     "webpack-dev-server": "^4.7.3"
   },
   "dependencies": {
-    "@types/chessboardjs": "^0.3.2"
+    "@types/chessboardjs": "^0.3.2",
+    "js-chess-engine": "1.0.2"
   }
 }
