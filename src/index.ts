@@ -101,7 +101,7 @@ document.addEventListener('keydown', (event: KeyboardEvent) => {
     state.selectedMove = Math.min(state.selectedMove + 1, state.moves.length - 1)
     redrawMoveList(state.moves, state.selectedMove);
     let animate = false;
-    // animate = true;
+    animate = true;
     board.position(state.moves[state.selectedMove].newPosition, animate); // Could animate forward moves, but this is a bit more complicated than just changing this last param to true. I like how lichess handles this.
   } else if (event.key === 'ArrowUp') {
     state.selectedMove = 0;
@@ -111,6 +111,8 @@ document.addEventListener('keydown', (event: KeyboardEvent) => {
     state.selectedMove = state.moves.length - 1;
     redrawMoveList(state.moves, state.selectedMove);
     board.position(state.moves[state.selectedMove].newPosition, false);
+  } else if (event.key === '`') {
+    onEngineClick();
   }
 });
 
@@ -155,13 +157,13 @@ function onEngineClick(): void {
     const oldPosition = board.fen();
     board.move(`${source}-${target}`);
     const newPosition = board.fen();
-    const color = '?';
+    const color = 'b';
     const piece = '?';
     const move = { color, piece, source, target, oldPosition, newPosition };
     state.moves.push(move);
     // TODO if move was in the past change history
-    redrawMoveList(state.moves, state.selectedMove);
     state.selectedMove = state.moves.length - 1;
+    redrawMoveList(state.moves, state.selectedMove);
   }
 }
 

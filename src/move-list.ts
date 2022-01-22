@@ -34,8 +34,9 @@ export function redrawMoveList(moves: Move[], selectedMove: number | undefined) 
 
 function moveToString(move: Move): string {
   const promotionPart = move.promotedTo ? `=${move.promotedTo}` : '';
-  if (move.piece !== 'P') {
-    return move.piece + (move.isCapture ? 'x' : '') + move.target + promotionPart;
+  const piece = move.piece !== '?' ? move.piece : move.source;
+  if (piece !== 'P') {
+    return piece + (move.isCapture ? 'x' : '') + move.target + promotionPart;
   } else {
     if (!move.isCapture) {
       return move.target + promotionPart;
